@@ -7,6 +7,7 @@ import Contact from "./Pages/Contact";
 import About from "./Pages/About";
 import Faq from "./Components/faq";
 import Newsletter from "./Components/Newsletter";
+import RootLayout from "./layout/RootLayout";
 
 function App() {
   return (
@@ -14,12 +15,13 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
 
-        <Route path="/contact" element={<Contact />}>
-          <Route path="/contact/faq" element={<Faq />} />
-          <Route path="contact/newsletter" element={<Newsletter />} />
+        <Route element={<RootLayout />}>
+          <Route path="faq" element={<Faq />} />
+          <Route path="newsletter" element={<Newsletter />} />
         </Route>
       </Routes>
 
