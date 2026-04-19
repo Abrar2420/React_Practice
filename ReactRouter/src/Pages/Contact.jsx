@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function Contact() {
   return (
@@ -16,6 +18,9 @@ function Contact() {
               OUR Phone no. dummy road, dummy street, dummy house, Dhaka,
               Bangladesh
             </h1>
+            <Link to="/contact/faq">Faq</Link>
+            <Link to="/contact/newsletter">News letter</Link>
+            <Outlet />
           </div>
         </div>
       </div>
