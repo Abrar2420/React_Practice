@@ -1,16 +1,15 @@
-import React, { Children } from "react";
-import { Outlet } from "react-router";
+import React, { Children, useEffect } from "react";
+import { Outlet, useNavigate } from "react-router";
 
-const ProtectedLayout = () => {
-  const user = {};
-  if (!Object.keys(user).length) {
-    return <h1>Cant go there</h1>;
-  }
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+const ProtectedLayout = ({ userRef }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!Object.keys(userRef.current).length) {
+      navigate("/login");
+    }
+  }, [navigate]);
+  return <>{Object.keys(userRef.current).length ? <Outlet /> : null}</>;
 };
 
 export default ProtectedLayout;
